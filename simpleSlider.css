@@ -2,10 +2,12 @@ html,body{
   height: 100%;
   margin: 0;
 }
-.moved{
-  -webkit-transform:translateX(200px);
+.movedRight{
+  -webkit-transform:translateX(500px);
 }
-
+.movedLeft{
+  -webkit-transform:translateX(-500px);
+}
 .main-content{
   -webkit-transition: all 0.3s ease-in-out;
   background-color: green;
@@ -16,7 +18,6 @@ html,body{
 }
 .trigger{
   position: relative;
-  top: 25%;
   color: midnightblue;
   border-radius: 10px;
   background-color: #ddd;
@@ -28,6 +29,12 @@ html,body{
   margin-left: auto;
   margin-right: auto;
   width: 150px;
+}
+.trigger-right{
+  top: 50%;
+}
+.trigger-left{
+  top: 45%;
 }
 .trigger:hover{
   background-color: grey;

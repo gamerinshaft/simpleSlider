@@ -9,8 +9,39 @@
 
 <body>
 <div id="pusher" class="main-content">
-<div id="ss-target" class="trigger">押してみてね</div>
+<div id="ss-target-left" class="trigger-left trigger">左開く</div>
+<div id="ss-target-right" class="trigger-right trigger">右開く</div>
 <script src="simpleSlider.js"></script>
+<script>
+var slider = new SimpleSlider({
+  $pusher: $('#pusher')
+});
+
+targetRight = $('#ss-target-right');
+targetLeft = $('#ss-target-left');
+$window = $(window);
+
+targetRight.click(function(e){
+  e.stopPropagation();
+  slider.openRight();
+  console.log(slider.pusherState());
+});
+
+targetLeft.click(function(e){
+  e.stopPropagation();
+  slider.openLeft();
+  console.log(slider.pusherState());
+});
+
+$window.click(function(){
+  slider.close();
+  console.log(slider.pusherState());
+});
+
+
+
+
+</script>
 
 </body>
 </html>
