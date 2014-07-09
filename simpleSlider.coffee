@@ -5,13 +5,13 @@ class window.SimpleSlider
 
   openLeft: =>
     if @state = 'left'
-      this.closeRight()
+      @closeRight()
     @pusher.addClass 'movedRight'
     @state = 'right'
 
   openRight: =>
     if @state = 'right'
-      this.closeLeft()
+      @closeLeft()
     @pusher.addClass 'movedLeft'
     @state = 'left'
 
