@@ -2,6 +2,18 @@ html,body{
   height: 100%;
   margin: 0;
 }
+.moved{
+  -webkit-transform:translateX(200px);
+}
+
+.main-content{
+  -webkit-transition: all 0.3s ease-in-out;
+  background-color: green;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+}
 .trigger{
   position: relative;
   top: 25%;
@@ -19,12 +31,4 @@ html,body{
 }
 .trigger:hover{
   background-color: grey;
-}
-
-.main-content{
-  background-color: green;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  height: 100%;
 }
