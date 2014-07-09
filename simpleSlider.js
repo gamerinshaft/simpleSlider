@@ -4,18 +4,24 @@
 
   swicth = 1;
 
-  $('#ss-target').click(function() {
+  $('#ss-target').click(function(e) {
+    e.stopPropagation();
+    $('#pusher').addClass('moved');
     if (swicth === 1) {
       $('#pusher').css({
-        'background-color': 'red'
+        'background-color': 'darkred'
       });
       return swicth = 0;
     } else {
       $('#pusher').css({
-        'background-color': 'green'
+        'background-color': 'darkgreen'
       });
       return swicth = 1;
     }
+  });
+
+  $(window).click(function() {
+    return $('#pusher').removeClass('moved');
   });
 
 }).call(this);
