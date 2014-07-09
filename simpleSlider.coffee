@@ -3,13 +3,13 @@ class window.SimpleSlider
     @pusher      = options.$pusher
     @state = 'center'
 
-  openLeft: =>
+  openLeft: ->
     if @state = 'left'
       @closeRight()
     @pusher.addClass 'movedRight'
     @state = 'right'
 
-  openRight: =>
+  openRight: ->
     if @state = 'right'
       @closeLeft()
     @pusher.addClass 'movedLeft'
