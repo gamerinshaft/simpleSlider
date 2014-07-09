@@ -1,0 +1,30 @@
+html,body{
+  height: 100%;
+  margin: 0;
+}
+.trigger{
+  position: relative;
+  top: 25%;
+  color: midnightblue;
+  border-radius: 10px;
+  background-color: #ddd;
+  padding: 15px;
+  border: solid 1px #ccc;
+  width: auto;
+  font-weight: bold;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+}
+.trigger:hover{
+  background-color: grey;
+}
+
+.main-content{
+  background-color: green;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+}
