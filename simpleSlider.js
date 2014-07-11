@@ -3,11 +3,13 @@
   window.SimpleSlider = (function() {
     function SimpleSlider(options) {
       this.pusher = options.$pusher;
+      this.leftbar = options.$leftbar;
+      this.rightbar = options.$right;
       this.state = 'center';
     }
 
     SimpleSlider.prototype.openLeft = function() {
-      if (this.state = 'left') {
+      if (this.state === 'left') {
         this.closeRight();
       }
       this.pusher.addClass('movedRight');
@@ -15,7 +17,7 @@
     };
 
     SimpleSlider.prototype.openRight = function() {
-      if (this.state = 'right') {
+      if (this.state === 'right') {
         this.closeLeft();
       }
       this.pusher.addClass('movedLeft');

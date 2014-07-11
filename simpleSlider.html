@@ -4,38 +4,42 @@
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="simpleSlider.css" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
+<script src="simpleSlider.js"></script>
 </head>
 
 <body>
+<div id="left-slide" class="left-slide">左バー</div>
+<div id="right-slide" class="right-slide">右バー</div>
 <div id="pusher" class="main-content">
-<div id="ss-target-left" class="trigger-left trigger">左開く</div>
-<div id="ss-target-right" class="trigger-right trigger">右開く</div>
-<script src="simpleSlider.js"></script>
-<script>
-var slider = new SimpleSlider({
-  $pusher: $('#pusher')
-});
+  <div id="ss-target-left" class="trigger-left trigger">左開く</div>
+  <div id="ss-target-right" class="trigger-right trigger">右開く</div>
+</div>
 
+
+
+<script>
 targetRight = $('#ss-target-right');
-targetLeft = $('#ss-target-left');
-$window = $(window);
+targetLeft  = $('#ss-target-left');
+$window     = $(window);
+
+var slider = new SimpleSlider({
+  $pusher:  $('#pusher'),
+  $leftbar: $('#left-slide'),
+  $rightbar: $('#right-slide'),
+});
 
 targetRight.click(function(e){
   e.stopPropagation();
   slider.openRight();
-  console.log(slider.pusherState());
 });
 
 targetLeft.click(function(e){
   e.stopPropagation();
   slider.openLeft();
-  console.log(slider.pusherState());
 });
 
 $window.click(function(){
   slider.close();
-  console.log(slider.pusherState());
 });
 
 
