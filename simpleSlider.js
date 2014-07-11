@@ -4,27 +4,37 @@
     function SimpleSlider(options) {
       this.pusher = options.$pusher;
       this.leftbar = options.$leftbar;
-      this.rightbar = options.$right;
+      this.rightbar = options.$rightbar;
       this.state = 'center';
     }
 
     SimpleSlider.prototype.openLeft = function() {
+      this.noneofbar(this.rightbar);
       if (this.state === 'left') {
         this.closeRight();
       }
       this.pusher.addClass('movedRight');
+      this.leftbar.removeClass('none');
       return this.state = 'right';
     };
 
     SimpleSlider.prototype.openRight = function() {
+      this.noneofbar(this.leftbar);
       if (this.state === 'right') {
         this.closeLeft();
       }
       this.pusher.addClass('movedLeft');
+      this.rightbar.removeClass('none');
       return this.state = 'left';
     };
 
     SimpleSlider.prototype.close = function() {
+      if (this.state === 'left') {
+        this.noneofbar(this.rightbar);
+      }
+      if (this.state === 'right') {
+        this.noneofbar(this.leftbar);
+      }
       this.pusher.removeClass('movedRight');
       this.pusher.removeClass('movedLeft');
       return this.state = 'center';
@@ -36,6 +46,15 @@
 
     SimpleSlider.prototype.closeRight = function() {
       return this.pusher.removeClass('movedLeft');
+    };
+
+    SimpleSlider.prototype.noneofbar = function(position) {
+      this.pusher.off('transitionend');
+      return this.pusher.on('transitionend', (function(_this) {
+        return function() {
+          return position.addClass('none');
+        };
+      })(this));
     };
 
     SimpleSlider.prototype.pusherState = function() {
