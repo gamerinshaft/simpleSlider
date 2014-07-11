@@ -6,22 +6,22 @@ class window.SimpleSlider
     @state    = 'center'
 
   openLeft: ->
-    @noneofbar(@rightbar)
+    @nobar(@rightbar)
     @closeRight() if @state == 'left'
     @pusher.addClass 'movedRight'
     @leftbar.removeClass 'none'
     @state = 'right'
 
   openRight: ->
-    @noneofbar(@leftbar)
+    @nobar(@leftbar)
     @closeLeft() if @state == 'right'
     @pusher.addClass 'movedLeft'
     @rightbar.removeClass 'none'
     @state = 'left'
 
   close: ->
-    @noneofbar(@rightbar) if @state == 'left'
-    @noneofbar(@leftbar)  if @state == 'right'
+    @nobar(@rightbar) if @state == 'left'
+    @nobar(@leftbar)  if @state == 'right'
     @pusher.removeClass 'movedRight'
     @pusher.removeClass 'movedLeft'
     @state = 'center'
@@ -32,7 +32,7 @@ class window.SimpleSlider
   closeRight: ->
     @pusher.removeClass 'movedLeft'
 
-  noneofbar: (position) ->
+  nobar: (position) ->
     @pusher.off 'transitionend'
     @pusher.on 'transitionend', =>
       position.addClass 'none'
