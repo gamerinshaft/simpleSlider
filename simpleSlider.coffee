@@ -6,22 +6,22 @@ class window.SimpleSlider
     @state    = 'center'
 
   openLeft: ->
-    this.noneofbar(@rightbar)
+    @noneofbar(@rightbar)
     @closeRight() if @state == 'left'
     @pusher.addClass 'movedRight'
     @leftbar.removeClass 'none'
     @state = 'right'
 
   openRight: ->
-    this.noneofbar(@leftbar)
+    @noneofbar(@leftbar)
     @closeLeft() if @state == 'right'
     @pusher.addClass 'movedLeft'
     @rightbar.removeClass 'none'
     @state = 'left'
 
   close: ->
-    this.noneofbar(@rightbar) if @state == 'left'
-    this.noneofbar(@leftbar) if @state == 'right'
+    @noneofbar(@rightbar) if @state == 'left'
+    @noneofbar(@leftbar)  if @state == 'right'
     @pusher.removeClass 'movedRight'
     @pusher.removeClass 'movedLeft'
     @state = 'center'
