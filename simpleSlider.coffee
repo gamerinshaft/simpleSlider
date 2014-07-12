@@ -41,7 +41,3 @@ class window.SimpleSlider
       @pushcontent.removeClass 'movedRight-content'
       @pushheader.removeClass 'movedRight-header'
     @state = 'left'
-
-  pusherState: ->
-    return @state
-
