@@ -9,53 +9,44 @@
       this.state = 'center';
     }
 
-    SimpleSlider.prototype.openLeft = function() {
-      this.nobar(this.rightbar);
+    SimpleSlider.prototype.moveCenter = function() {
       if (this.state === 'left') {
-        this.closeRight();
+        this.pushcontent.removeClass('movedLeft-content');
+        this.pushheader.removeClass('movedLeft-header');
+        this.hidebar(this.rightbar);
+      } else if (this.state === 'right') {
+        this.hidebar(this.leftbar);
+        this.pushcontent.removeClass('movedRight-content');
+        this.pushheader.removeClass('movedRight-header');
       }
-      this.pushcontent.addClass('movedRight-content');
-      this.pushheader.addClass('movedRight-header');
-      this.leftbar.removeClass('none');
-      return this.state = 'right';
-    };
-
-    SimpleSlider.prototype.openRight = function() {
-      this.nobar(this.leftbar);
-      if (this.state === 'right') {
-        this.closeLeft();
-      }
-      this.pushcontent.addClass('movedLeft-content');
-      this.pushheader.addClass('movedLeft-header');
-      this.rightbar.removeClass('none');
-      return this.state = 'left';
-    };
-
-    SimpleSlider.prototype.close = function() {
-      if (this.state === 'left') {
-        this.nobar(this.rightbar);
-      }
-      if (this.state === 'right') {
-        this.nobar(this.leftbar);
-      }
-      this.pushcontent.removeClass('movedRight-content');
-      this.pushcontent.removeClass('movedLeft-content');
-      this.pushheader.removeClass('movedRight-header');
-      this.pushheader.removeClass('movedLeft-header');
       return this.state = 'center';
     };
 
-    SimpleSlider.prototype.closeLeft = function() {
-      this.pushcontent.removeClass('movedRight-content');
-      return this.pushheader.removeClass('movedRight-header');
+    SimpleSlider.prototype.moveRight = function() {
+      this.leftbar.removeClass('none');
+      this.pushcontent.addClass('movedRight-content');
+      this.pushheader.addClass('movedRight-header');
+      if (this.state === 'left') {
+        this.hidebar(this.rightbar);
+        this.pushcontent.removeClass('movedLeft-content');
+        this.pushheader.removeClass('movedLeft-header');
+      }
+      return this.state = 'right';
     };
 
-    SimpleSlider.prototype.closeRight = function() {
-      this.pushcontent.removeClass('movedLeft-content');
-      return this.pushheader.removeClass('movedLeft-header');
+    SimpleSlider.prototype.moveLeft = function() {
+      this.rightbar.removeClass('none');
+      this.pushcontent.addClass('movedLeft-content');
+      this.pushheader.addClass('movedLeft-header');
+      if (this.state === 'right') {
+        this.hidebar(this.leftbar);
+        this.pushcontent.removeClass('movedRight-content');
+        this.pushheader.removeClass('movedRight-header');
+      }
+      return this.state = 'left';
     };
 
-    SimpleSlider.prototype.nobar = function(position) {
+    SimpleSlider.prototype.hidebar = function(position) {
       this.pushcontent.off('transitionend');
       return this.pushcontent.on('transitionend', (function(_this) {
         return function() {

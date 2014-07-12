@@ -6,40 +6,38 @@ class window.SimpleSlider
     @rightbar = options.$rightbar
     @state    = 'center'
 
-  openLeft: ->
-    @nobar(@rightbar)
-    @closeRight() if @state == 'left'
-    @pushcontent.addClass 'movedRight-content'
-    @pushheader.addClass 'movedRight-header'
-    @leftbar.removeClass 'none'
-    @state = 'right'
-
-  openRight: ->
-    @nobar(@leftbar)
-    @closeLeft() if @state == 'right'
-    @pushcontent.addClass 'movedLeft-content'
-    @pushheader.addClass 'movedLeft-header'
-    @rightbar.removeClass 'none'
-    @state = 'left'
-
-  close: ->
-    @nobar(@rightbar) if @state == 'left'
-    @nobar(@leftbar)  if @state == 'right'
-    @pushcontent.removeClass 'movedRight-content'
-    @pushcontent.removeClass 'movedLeft-content'
-    @pushheader.removeClass 'movedRight-header'
-    @pushheader.removeClass 'movedLeft-header'
+  moveCenter: ->
+    if @state == 'left'
+      @pushcontent.removeClass 'movedLeft-content'
+      @pushheader.removeClass 'movedLeft-header'
+      @hidebar(@rightbar)
+    else if @state == 'right'
+      @hidebar(@leftbar)
+      @pushcontent.removeClass 'movedRight-content'
+      @pushheader.removeClass 'movedRight-header'
     @state = 'center'
 
-  closeLeft: ->
-    @pushcontent.removeClass 'movedRight-content'
-    @pushheader.removeClass 'movedRight-header'
+  moveRight: ->
+    @leftbar.removeClass 'none'
+    @pushcontent.addClass 'movedRight-content'
+    @pushheader.addClass 'movedRight-header'
+    if @state == 'left'
+      @hidebar(@rightbar)
+      @pushcontent.removeClass 'movedLeft-content'
+      @pushheader.removeClass 'movedLeft-header'
+    @state = 'right'
 
-  closeRight: ->
-    @pushcontent.removeClass 'movedLeft-content'
-    @pushheader.removeClass 'movedLeft-header'
+  moveLeft: ->
+    @rightbar.removeClass 'none'
+    @pushcontent.addClass 'movedLeft-content'
+    @pushheader.addClass 'movedLeft-header'
+    if @state == 'right'
+      @hidebar(@leftbar)
+      @pushcontent.removeClass 'movedRight-content'
+      @pushheader.removeClass 'movedRight-header'
+    @state = 'left'
 
-  nobar: (position) ->
+  hidebar: (position) ->
     @pushcontent.off 'transitionend'
     @pushcontent.on 'transitionend', =>
       position.addClass 'none'

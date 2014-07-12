@@ -32,16 +32,16 @@ var slider = new SimpleSlider({
 
 targetRight.click(function(e){
   e.stopPropagation();
-  slider.openRight();
+  slider.moveLeft();
 });
 
 targetLeft.click(function(e){
   e.stopPropagation();
-  slider.openLeft();
+  slider.moveRight();
 });
 
 $window.click(function(){
-  slider.close();
+  slider.moveCenter();
 });
 
 </script>
