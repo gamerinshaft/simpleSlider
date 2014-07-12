@@ -10,6 +10,7 @@
     }
 
     SimpleSlider.prototype.moveCenter = function() {
+      this.pushcontent.off('transitionend');
       if (this.state === 'left') {
         this.pushcontent.removeClass('movedLeft-content');
         this.pushheader.removeClass('movedLeft-header');
@@ -23,6 +24,7 @@
     };
 
     SimpleSlider.prototype.moveRight = function() {
+      this.pushcontent.off('transitionend');
       this.leftbar.removeClass('none');
       this.pushcontent.addClass('movedRight-content');
       this.pushheader.addClass('movedRight-header');
@@ -35,6 +37,7 @@
     };
 
     SimpleSlider.prototype.moveLeft = function() {
+      this.pushcontent.off('transitionend');
       this.rightbar.removeClass('none');
       this.pushcontent.addClass('movedLeft-content');
       this.pushheader.addClass('movedLeft-header');
@@ -47,7 +50,6 @@
     };
 
     SimpleSlider.prototype.hidebar = function(position) {
-      this.pushcontent.off('transitionend');
       return this.pushcontent.on('transitionend', (function(_this) {
         return function() {
           return position.addClass('none');
