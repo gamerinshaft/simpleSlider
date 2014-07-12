@@ -7,10 +7,8 @@ class window.SimpleSlider
     @state       = 'center'
 
     @pushcontent.on 'transitionend', =>
-      if @state == 'right'
-        @rightbar.addClass 'none'
-      else if @state == 'left'
-        @leftbar.addClass 'none'
+      @rightbar.addClass 'none' if @state == 'right' or @state == 'center'
+      @leftbar.addClass 'none' if @state == 'left' or @state == 'center'
 
   moveCenter: ->
     if @state == 'left'
