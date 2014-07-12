@@ -2,10 +2,10 @@ html,body{
   height: 100%;
   margin: 0;
 }
-.movedRight{
+.movedRight-content{
   -webkit-transform:translateX(30%);
 }
-.movedLeft{
+.movedLeft-content{
   -webkit-transform:translateX(-30%);
 }
 .main-content{

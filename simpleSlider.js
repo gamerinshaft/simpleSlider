@@ -3,6 +3,7 @@
   window.SimpleSlider = (function() {
     function SimpleSlider(options) {
       this.pushcontent = options.$pushcontent;
+      this.pushheader = options.$pushheader;
       this.leftbar = options.$leftbar;
       this.rightbar = options.$rightbar;
       this.state = 'center';
@@ -13,7 +14,8 @@
       if (this.state === 'left') {
         this.closeRight();
       }
-      this.pushcontent.addClass('movedRight');
+      this.pushcontent.addClass('movedRight-content');
+      this.pushheader.addClass('movedRight-header');
       this.leftbar.removeClass('none');
       return this.state = 'right';
     };
@@ -23,7 +25,8 @@
       if (this.state === 'right') {
         this.closeLeft();
       }
-      this.pushcontent.addClass('movedLeft');
+      this.pushcontent.addClass('movedLeft-content');
+      this.pushheader.addClass('movedLeft-header');
       this.rightbar.removeClass('none');
       return this.state = 'left';
     };
@@ -35,17 +38,21 @@
       if (this.state === 'right') {
         this.nobar(this.leftbar);
       }
-      this.pushcontent.removeClass('movedRight');
-      this.pushcontent.removeClass('movedLeft');
+      this.pushcontent.removeClass('movedRight-content');
+      this.pushcontent.removeClass('movedLeft-content');
+      this.pushheader.removeClass('movedRight-header');
+      this.pushheader.removeClass('movedLeft-header');
       return this.state = 'center';
     };
 
     SimpleSlider.prototype.closeLeft = function() {
-      return this.pushcontent.removeClass('movedRight');
+      this.pushcontent.removeClass('movedRight-content');
+      return this.pushheader.removeClass('movedRight-header');
     };
 
     SimpleSlider.prototype.closeRight = function() {
-      return this.pushcontent.removeClass('movedLeft');
+      this.pushcontent.removeClass('movedLeft-content');
+      return this.pushheader.removeClass('movedLeft-header');
     };
 
     SimpleSlider.prototype.nobar = function(position) {

@@ -10,7 +10,8 @@
 <body>
 <div id="left-slide" class="left-slide none">左バー</div>
 <div id="right-slide" class="right-slide none">右バー</div>
-<div id="pusher" class="main-content">
+<div id="pushheader"></div>
+<div id="pushcontent" class="main-content">
   <div id="ss-target-left" class="trigger-left trigger">左開く</div>
   <div id="ss-target-right" class="trigger-right trigger">右開く</div>
 </div>
@@ -23,9 +24,10 @@ targetLeft  = $('#ss-target-left');
 $window     = $(window);
 
 var slider = new SimpleSlider({
-  $pushcontent: $('#pusher'),
+  $pushcontent: $('#pushcontent'),
+  $pushheader: $('#pushheader'),
   $leftbar:     $('#left-slide'),
-  $rightbar:    $('#right-slide'),
+  $rightbar:    $('#right-slide')
 });
 
 targetRight.click(function(e){
