@@ -13,7 +13,6 @@ class window.SimpleSlider
         @leftbar.addClass 'none'
 
   moveCenter: ->
-    @pushcontent.off 'transitionend'
     if @state == 'left'
       @pushcontent.removeClass 'movedLeft-content'
       @pushheader.removeClass 'movedLeft-header'
@@ -23,7 +22,6 @@ class window.SimpleSlider
     @state = 'center'
 
   moveRight: ->
-    @pushcontent.off 'transitionend'
     @leftbar.removeClass 'none'
     @pushcontent.addClass 'movedRight-content'
     @pushheader.addClass 'movedRight-header'
@@ -33,7 +31,6 @@ class window.SimpleSlider
     @state = 'right'
 
   moveLeft: ->
-    @pushcontent.off 'transitionend'
     @rightbar.removeClass 'none'
     @pushcontent.addClass 'movedLeft-content'
     @pushheader.addClass 'movedLeft-header'
