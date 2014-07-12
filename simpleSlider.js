@@ -2,7 +2,7 @@
 (function() {
   window.SimpleSlider = (function() {
     function SimpleSlider(options) {
-      this.pusher = options.$pusher;
+      this.pushcontent = options.$pushcontent;
       this.leftbar = options.$leftbar;
       this.rightbar = options.$rightbar;
       this.state = 'center';
@@ -13,7 +13,7 @@
       if (this.state === 'left') {
         this.closeRight();
       }
-      this.pusher.addClass('movedRight');
+      this.pushcontent.addClass('movedRight');
       this.leftbar.removeClass('none');
       return this.state = 'right';
     };
@@ -23,7 +23,7 @@
       if (this.state === 'right') {
         this.closeLeft();
       }
-      this.pusher.addClass('movedLeft');
+      this.pushcontent.addClass('movedLeft');
       this.rightbar.removeClass('none');
       return this.state = 'left';
     };
@@ -35,21 +35,22 @@
       if (this.state === 'right') {
         this.nobar(this.leftbar);
       }
-      this.pusher.removeClass('movedRight');
-      this.pusher.removeClass('movedLeft');
+      this.pushcontent.removeClass('movedRight');
+      this.pushcontent.removeClass('movedLeft');
       return this.state = 'center';
     };
 
     SimpleSlider.prototype.closeLeft = function() {
-      return this.pusher.removeClass('movedRight');
+      return this.pushcontent.removeClass('movedRight');
     };
 
     SimpleSlider.prototype.closeRight = function() {
-      return this.pusher.removeClass('movedLeft');
+      return this.pushcontent.removeClass('movedLeft');
     };
 
     SimpleSlider.prototype.nobar = function(position) {
-      return this.pusher.one('transitionend', (function(_this) {
+      this.pushcontent.off('transitionend');
+      return this.pushcontent.on('transitionend', (function(_this) {
         return function() {
           return position.addClass('none');
         };
