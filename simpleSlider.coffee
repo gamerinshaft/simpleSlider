@@ -33,8 +33,7 @@ class window.SimpleSlider
     @pusher.removeClass 'movedLeft'
 
   nobar: (position) ->
-    @pusher.off 'transitionend'
-    @pusher.on 'transitionend', =>
+    @pusher.one 'transitionend', =>
       position.addClass 'none'
 
   pusherState: ->

@@ -49,8 +49,7 @@
     };
 
     SimpleSlider.prototype.nobar = function(position) {
-      this.pusher.off('transitionend');
-      return this.pusher.on('transitionend', (function(_this) {
+      return this.pusher.one('transitionend', (function(_this) {
         return function() {
           return position.addClass('none');
         };
